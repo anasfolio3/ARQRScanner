@@ -20,6 +20,8 @@ final class ARScene {
     private var baseEntity = Entity()
 
     private let qrCodeCollection = QRCodeCollection()
+    
+    private var sensorsList = [ModelEntity]()
 
     init(arView: ARView, anchor: AnchorEntity) {
         self.arView = arView
@@ -186,5 +188,26 @@ extension ARScene {
         let model = ModelEntity(mesh: meshSphere, materials: [matSphere])
         model.transform.translation = qrcode.center
         baseEntity.addChild(model)
+        
+        sensorsList.append(model)
+        
+        if (sensorsList.count == 2){
+            calculateDistance()
+        }
+            
+    }
+    
+    func calculateDistance() {
+        
+        let start = sensorsList[0]
+        let end = sensorsList[1]
+        
+        let distance = sqrt(pow(start.position.x-end.position.x, 2) +
+                           pow(start.position.y-end.position.y, 2) +
+                           pow(start.position.z-end.position.z, 2))
+                
+        print("Measured distance is \(abs(distance))m")
+        print("Measured distance is \(abs(distance)*100)cm")
+
     }
 }
