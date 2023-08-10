@@ -13,7 +13,7 @@ final class ARScene {
     enum State { case stop, scanning }
     private var state: State = .stop
     private var accumulativeTime: Double = 0.0
-    private let detectionIntervalTime: Double = 3.0 // scanning interval [sec]
+    private let detectionIntervalTime: Double = 5.0 // scanning interval [sec]
     private var renderLoopSubscription: Cancellable?
 
     private var arView: ARView!
