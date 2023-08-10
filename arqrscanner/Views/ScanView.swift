@@ -12,11 +12,6 @@ struct ScanView: View {
         ZStack {
             ARContainerView()
 
-            VStack {
-                Text("Scanning QR code ...")
-                    .foregroundColor(.green)
-                Spacer()
-            }
         }
     }
 }
