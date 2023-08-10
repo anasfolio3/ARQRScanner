@@ -61,7 +61,11 @@ extension ARScene {
                                     self.qrCodeCollection.add(qrcode)
                                     self.placeQRCodeModel(at: qrcode)
                                     print("LOG: payload = \(qrcode.payload ?? "")")
-//                                    NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : qrcode.payload])
+                                    NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : qrcode.payload])
+                                    
+                                    if (self.sensorsList.count == 2){
+                                        self.calculateDistance()
+                                    }
                                 }
                             }
                         }
@@ -191,11 +195,7 @@ extension ARScene {
         baseEntity.addChild(model)
         
         sensorsList.append(model)
-        
-        if (sensorsList.count == 2){
-            calculateDistance()
-        }
-            
+                            
     }
     
     func calculateDistance() {
