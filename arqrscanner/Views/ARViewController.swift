@@ -12,6 +12,7 @@ import RealityKit
 final class ARViewController: UIViewController {
     private var arView: ARView!
     private var arScene: ARScene!
+    let bottomLabel = UILabel()
 
     override func viewDidLoad() {
         #if targetEnvironment(simulator)
@@ -45,10 +46,46 @@ final class ARViewController: UIViewController {
         }
         #endif
 
+        NotificationCenter.default.addObserver(self, selector: #selector(onQRPayload(_:)), name: Notification.Name("QR"), object: nil)
+        addLabel(text: "Scanning..")
+
         arScene.startSession()
+    }
+    
+    @objc func onQRPayload(_ not: Notification) {
+        if let userInfo = not.userInfo, let text = userInfo["message"] as? String {
+            DispatchQueue.main.async {
+                self.bottomLabel.text = text
+            }
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("QR"), object: nil)
         arScene.stopSession()
+    }
+    
+    private func addLabel(text: String) {
+        
+        // Create a UILabel
+        bottomLabel.text = text
+        bottomLabel.textAlignment = .center
+        bottomLabel.backgroundColor = .black
+        bottomLabel.textColor = .white
+        
+        // Add the label to the view
+        arView.addSubview(bottomLabel)
+        
+        // Enable auto layout for the label
+        bottomLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Set constraints for the label
+        NSLayoutConstraint.activate([
+            bottomLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bottomLabel.heightAnchor.constraint(equalToConstant: 50) // Adjust the height as needed
+        ])
+    
     }
 }

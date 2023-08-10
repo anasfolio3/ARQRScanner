@@ -61,6 +61,7 @@ extension ARScene {
                                     self.qrCodeCollection.add(qrcode)
                                     self.placeQRCodeModel(at: qrcode)
                                     print("LOG: payload = \(qrcode.payload ?? "")")
+//                                    NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : qrcode.payload])
                                 }
                             }
                         }
@@ -206,8 +207,9 @@ extension ARScene {
                            pow(start.position.y-end.position.y, 2) +
                            pow(start.position.z-end.position.z, 2))
                 
-        print("Measured distance is \(abs(distance))m")
-        print("Measured distance is \(abs(distance)*100)cm")
+        let distanceInMeter = String(format: "%.3f m", abs(distance))
+        let distanceInCentimeter = String(format: "%.3f cm", (abs(distance) * 100))
 
+        NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : "\(distanceInMeter), \(distanceInCentimeter)"])
     }
 }
