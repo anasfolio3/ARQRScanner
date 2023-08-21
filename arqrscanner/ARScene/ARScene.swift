@@ -13,15 +13,30 @@ final class ARScene {
     enum State { case stop, scanning }
     private var state: State = .stop
     private var accumulativeTime: Double = 0.0
-    private let detectionIntervalTime: Double = 5.0 // scanning interval [sec]
+    private let detectionIntervalTime: Double = 2.0 // scanning interval [sec]
     private var renderLoopSubscription: Cancellable?
 
     private var arView: ARView!
     private var baseEntity = Entity()
 
-    private let qrCodeCollection = QRCodeCollection()
+    private var qrCodeCollection = QRCodeCollection()
+        
+    private var baseCode: QRCode? = nil;
+    private var mobileCode: QRCode? = nil;
+    private var viewMode:Bool = false;
+    private var dirVector: SIMD3<Float> = .zero
     
-    private var sensorsList = [ModelEntity]()
+    func resetCodes(){
+        viewMode = false;
+        qrCodeCollection = QRCodeCollection();
+        baseCode = nil;
+        mobileCode = nil;
+    }
+    
+    func triggerViewMode(){
+        viewMode = true;
+        removeAllChildEntities(from: baseEntity)
+    }
 
     init(arView: ARView, anchor: AnchorEntity) {
         self.arView = arView
@@ -57,14 +72,28 @@ extension ARScene {
                     if !qrcodes.isEmpty {
                         await MainActor.run {
                             for qrcode in qrcodes {
-                                if !self.qrCodeCollection.isIncluded(qrcode) {
+                                
+                                // when view mode is true
+                                if (self.viewMode == true){
+                                    if(qrcode.payload == self.baseCode?.payload){
+                                        self.placeQRCodeModel(at: qrcode)
+                                        self.placeModelRelativeToBase()
+                                        self.viewMode = false;
+                                    }
+                                }
+                                else if !self.qrCodeCollection.isIncluded(qrcode) {
                                     self.qrCodeCollection.add(qrcode)
                                     self.placeQRCodeModel(at: qrcode)
                                     print("LOG: payload = \(qrcode.payload ?? "")")
                                     NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : qrcode.payload])
                                     
-                                    if (self.sensorsList.count == 2){
+                                    if(self.baseCode == nil){
+                                        self.baseCode = qrcode
+                                    }
+                                    else{
+                                        self.mobileCode = qrcode
                                         self.calculateDistance()
+                                        self.triggerViewMode()
                                     }
                                 }
                             }
@@ -180,36 +209,76 @@ extension ARScene {
         if let meshPolygon = try? MeshResource.generate(from: [descriptor]) {
             let model = ModelEntity(mesh: meshPolygon,
                                     materials: [matPolygon])
+            model.name = "plane"
             baseEntity.addChild(model)
         } else {
             fatalError("failed to generate mesh-resource.")
         }
-
-        // place a sphere on top of the QR code
-
-        let meshSphere = MeshResource.generateSphere(radius: 0.01)
-        let matSphere = SimpleMaterial(color: UIColor.randomColor(alpha: 1.0),
-                                      isMetallic: false)
-        let model = ModelEntity(mesh: meshSphere, materials: [matSphere])
-        model.transform.translation = qrcode.center
-        baseEntity.addChild(model)
         
-        sensorsList.append(model)
-                            
+//        /* Place a sphere on top of the QR code plane */
+//        let meshSphere = MeshResource.generateSphere(radius: 0.01)
+//        let matSphere = SimpleMaterial(color: UIColor.randomColor(alpha: 1.0),
+//                                      isMetallic: false)
+//        let model = ModelEntity(mesh: meshSphere, materials: [matSphere])
+//        model.transform.translation = qrcode.center
+//        baseEntity.addChild(model)
+//        model.name = "ball"
     }
     
     func calculateDistance() {
         
-        let start = sensorsList[0]
-        let end = sensorsList[1]
+        let start = baseCode.unsafelyUnwrapped.center
+        let end = mobileCode.unsafelyUnwrapped.center
         
-        let distance = sqrt(pow(start.position.x-end.position.x, 2) +
-                           pow(start.position.y-end.position.y, 2) +
-                           pow(start.position.z-end.position.z, 2))
+        let distance = sqrt(pow(start.x - end.x, 2) +
+                           pow(start.y - end.y, 2) +
+                           pow(start.z - end.z, 2))
                 
         let distanceInMeter = String(format: "%.3f m", abs(distance))
         let distanceInCentimeter = String(format: "%.3f cm", (abs(distance) * 100))
 
         NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : "\(distanceInMeter), \(distanceInCentimeter)"])
+        
+        // calculating the dir vector
+        dirVector = end - start;
     }
+    
+    func placeGenericModel(v: SIMD3<Float>){
+        
+        let matGeo = SimpleMaterial(color: UIColor.randomColor(alpha: 1.0), isMetallic: false)
+        
+        /* Plane mesh creation */
+        let meshGeo = MeshResource.generateBox(width: 0.06, height: 0.06, depth: 0.06, cornerRadius: 0.005 )
+        let model = ModelEntity(mesh: meshGeo, materials: [matGeo])
+
+        let rotationAngle: Float = 40.0
+        let rotation = simd_quatf(angle: rotationAngle * .pi / 180, axis: [0, 1, 0])
+        model.transform.rotation = rotation
+         
+//        /* Sphere mesh creation */
+//        let meshGeo = MeshResource.generateSphere(radius: 0.04)
+//        let model = ModelEntity(mesh: meshGeo, materials: [matGeo])
+//
+//        let scaleY: Float = 0.03
+//        model.transform.scale.y = scaleY
+                
+        if let basePosition = baseCode?.center{
+            model.transform.translation = basePosition + v;
+        }
+        
+        baseEntity.addChild(model)
+        model.name = "ball"
+    }
+            
+    func placeModelRelativeToBase(){
+        placeGenericModel(v: dirVector)
+    }
+    
+    func removeAllChildEntities(from entity: Entity) {
+        for i in (0..<entity.children.count).reversed() {
+            let childEntity = entity.children[i]
+            childEntity.removeFromParent()
+        }
+    }
+
 }
