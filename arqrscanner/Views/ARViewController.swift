@@ -14,6 +14,7 @@ final class ARViewController: UIViewController {
     private var arScene: ARScene!
     let bottomLabel = UILabel()
     let backButton = UIButton()
+    let scanButton = UIButton()
 
     override func viewDidLoad() {
         #if targetEnvironment(simulator)
@@ -50,6 +51,7 @@ final class ARViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onQRPayload(_:)), name: Notification.Name("QR"), object: nil)
         addLabel(text: "Scanning..")
         addBackButton()
+        addScanButton()
         arScene.startSession()
     }
     
@@ -111,6 +113,31 @@ final class ARViewController: UIViewController {
             backButton.topAnchor.constraint(equalTo: view.topAnchor,constant: 20),
             backButton.heightAnchor.constraint(equalToConstant: 50), // Adjust the height as needed
             backButton.widthAnchor.constraint(equalToConstant: 100) // Adjust the height as needed
+        ])
+    
+    }
+    
+    private func addScanButton() {
+        
+        scanButton.setTitle("Scan", for: .normal)
+        scanButton.frame = CGRect.init(x: 0, y: 0, width: 100, height: 50)
+        
+        // Add the label to the view
+        arView.addSubview(scanButton)
+        
+        arScene.setScanButton(btn: scanButton)
+        
+        scanButton.isHidden = false
+        
+        // Enable auto layout for the label
+        scanButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Set constraints for the label
+        NSLayoutConstraint.activate([
+            scanButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scanButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -50),
+            scanButton.heightAnchor.constraint(equalToConstant: 50), // Adjust the height as needed
+            scanButton.widthAnchor.constraint(equalToConstant: 100) // Adjust the height as needed
         ])
     
     }

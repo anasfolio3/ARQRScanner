@@ -28,15 +28,22 @@ final class ARScene {
     var distanceMeter = ""
     var distanceCM = ""
     private var backButton : UIButton? = nil
+    private var scanButton : UIButton? = nil
     
     func setBackButton(btn : UIButton){
         backButton = btn
         btn.addTarget(self, action: #selector(resetCodes), for: .touchUpInside)
     }
     
+    func setScanButton(btn : UIButton){
+        scanButton = btn
+        btn.addTarget(self, action: #selector(scanCode), for: .touchUpInside)
+    }
+    
     @objc
     func resetCodes(){
         backButton?.isHidden = true
+        scanButton?.isHidden = false
         viewMode = false;
         qrCodeCollection = QRCodeCollection();
         baseCode = nil;
@@ -44,8 +51,62 @@ final class ARScene {
         removeAllChildEntities(from: baseEntity)
     }
     
+    @objc
+    func scanCode(){
+        guard let frame = self.arView.session.currentFrame else { return }
+        Task{
+            // scan the QR code
+            let qrcodes = self.scan(frame: frame)
+            // place virtual objects in the AR scene
+            if !qrcodes.isEmpty {
+                await MainActor.run {
+                    for qrcode in qrcodes {
+                        NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : "Scanned: \(qrcode.payload!)"])
+                        // when view mode is true
+                        if (self.viewMode == true){
+                            if(qrcode.payload == self.baseCode?.payload){
+                                self.placeQRCodeModel(at: qrcode)
+                                self.placeModelRelativeToBase()
+                                self.viewMode = false;
+                            }
+                        }
+                        else if !self.qrCodeCollection.isIncluded(qrcode) {
+                            self.qrCodeCollection.add(qrcode)
+                            self.placeQRCodeModel(at: qrcode)
+                            print("LOG: payload = \(qrcode.payload ?? "")")
+                            //                                    NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : qrcode.payload])
+                            
+                            if(self.baseCode == nil){
+                                self.baseCode = qrcode
+                            }
+                            else{
+                                self.mobileCode = qrcode
+                                self.calculateDistance()
+                                let alert = UIAlertController(title: "Do you want to switch to view mode?", message: "Calculated distance is \(self.distanceMeter) \(self.distanceCM)", preferredStyle:.alert)
+                                alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { _ in
+                                    self.triggerViewMode()
+                                }))
+                                alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: { _ in
+                                    self.resetCodes()
+                                }))
+                                
+                                if let window = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+                                {
+                                    window.rootViewController?.present(alert, animated: true)
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
     func triggerViewMode(){
         self.backButton?.isHidden = false
+        //scanButton?.isHidden = true
         viewMode = true;
         removeAllChildEntities(from: baseEntity)
     }
@@ -77,53 +138,7 @@ extension ARScene {
             if self.accumulativeTime > self.detectionIntervalTime {
                 guard let frame = self.arView.session.currentFrame else { return }
                 self.accumulativeTime = 0 // clear after confirmation of frame existence
-                Task {
-                    // scan the QR code
-                    let qrcodes = self.scan(frame: frame)
-                    // place virtual objects in the AR scene
-                    if !qrcodes.isEmpty {
-                        await MainActor.run {
-                            for qrcode in qrcodes {
-                                NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : "Scanned: \(qrcode.payload!)"])
-                                // when view mode is true
-                                if (self.viewMode == true){
-                                    if(qrcode.payload == self.baseCode?.payload){
-                                        self.placeQRCodeModel(at: qrcode)
-                                        self.placeModelRelativeToBase()
-                                        self.viewMode = false;
-                                    }
-                                }
-                                else if !self.qrCodeCollection.isIncluded(qrcode) {
-                                    self.qrCodeCollection.add(qrcode)
-                                    self.placeQRCodeModel(at: qrcode)
-                                    print("LOG: payload = \(qrcode.payload ?? "")")
-//                                    NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : qrcode.payload])
-                                    
-                                    if(self.baseCode == nil){
-                                        self.baseCode = qrcode
-                                    }
-                                    else{
-                                        self.mobileCode = qrcode
-                                        self.calculateDistance()
-                                        let alert = UIAlertController(title: "Do you want to switch to view mode?", message: "Calculated distance is \(self.distanceMeter) \(self.distanceCM)", preferredStyle:.alert)
-                                        alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { _ in
-                                            self.triggerViewMode()
-                                        }))
-                                        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: { _ in
-                                            self.resetCodes()
-                                        }))
-                                    
-                                        if let window = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
-                                        {
-                                            window.rootViewController?.present(alert, animated: true)
-                                        }
-                                        
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                
             }
         }
     }
