@@ -13,7 +13,7 @@ final class ARScene {
     enum State { case stop, scanning }
     private var state: State = .stop
     private var accumulativeTime: Double = 0.0
-    private let detectionIntervalTime: Double = 2.0 // scanning interval [sec]
+    private let detectionIntervalTime: Double = 5.0 // scanning interval [sec]
     private var renderLoopSubscription: Cancellable?
 
     private var arView: ARView!
@@ -25,15 +25,27 @@ final class ARScene {
     private var mobileCode: QRCode? = nil;
     private var viewMode:Bool = false;
     private var dirVector: SIMD3<Float> = .zero
+    var distanceMeter = ""
+    var distanceCM = ""
+    private var backButton : UIButton? = nil
     
+    func setBackButton(btn : UIButton){
+        backButton = btn
+        btn.addTarget(self, action: #selector(resetCodes), for: .touchUpInside)
+    }
+    
+    @objc
     func resetCodes(){
+        backButton?.isHidden = true
         viewMode = false;
         qrCodeCollection = QRCodeCollection();
         baseCode = nil;
         mobileCode = nil;
+        removeAllChildEntities(from: baseEntity)
     }
     
     func triggerViewMode(){
+        self.backButton?.isHidden = false
         viewMode = true;
         removeAllChildEntities(from: baseEntity)
     }
@@ -72,7 +84,7 @@ extension ARScene {
                     if !qrcodes.isEmpty {
                         await MainActor.run {
                             for qrcode in qrcodes {
-                                
+                                NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : "Scanned: \(qrcode.payload!)"])
                                 // when view mode is true
                                 if (self.viewMode == true){
                                     if(qrcode.payload == self.baseCode?.payload){
@@ -85,7 +97,7 @@ extension ARScene {
                                     self.qrCodeCollection.add(qrcode)
                                     self.placeQRCodeModel(at: qrcode)
                                     print("LOG: payload = \(qrcode.payload ?? "")")
-                                    NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : qrcode.payload])
+//                                    NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : qrcode.payload])
                                     
                                     if(self.baseCode == nil){
                                         self.baseCode = qrcode
@@ -93,7 +105,19 @@ extension ARScene {
                                     else{
                                         self.mobileCode = qrcode
                                         self.calculateDistance()
-                                        self.triggerViewMode()
+                                        let alert = UIAlertController(title: "Do you want to switch to view mode?", message: "Calculated distance is \(self.distanceMeter) \(self.distanceCM)", preferredStyle:.alert)
+                                        alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { _ in
+                                            self.triggerViewMode()
+                                        }))
+                                        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: { _ in
+                                            self.resetCodes()
+                                        }))
+                                    
+                                        if let window = UIApplication.shared.connectedScenes.map({ $0 as? UIWindowScene }).compactMap({ $0 }).first?.windows.first
+                                        {
+                                            window.rootViewController?.present(alert, animated: true)
+                                        }
+                                        
                                     }
                                 }
                             }
@@ -225,6 +249,8 @@ extension ARScene {
 //        model.name = "ball"
     }
     
+    
+    
     func calculateDistance() {
         
         let start = baseCode.unsafelyUnwrapped.center
@@ -234,10 +260,10 @@ extension ARScene {
                            pow(start.y - end.y, 2) +
                            pow(start.z - end.z, 2))
                 
-        let distanceInMeter = String(format: "%.3f m", abs(distance))
-        let distanceInCentimeter = String(format: "%.3f cm", (abs(distance) * 100))
+        distanceMeter = String(format: "%.3f m", abs(distance))
+        distanceCM = String(format: "%.3f cm", (abs(distance) * 100))
 
-        NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : "\(distanceInMeter), \(distanceInCentimeter)"])
+//        NotificationCenter.default.post(name: Notification.Name("QR"), object: nil, userInfo: ["message" : "\(distanceMeter), \(distanceCM)"])
         
         // calculating the dir vector
         dirVector = end - start;
