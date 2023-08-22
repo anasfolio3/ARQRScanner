@@ -1,12 +1,8 @@
-# AR QR Scanner
+# AR QR Scanner / Factory Native App
 
 ![AppIcon](https://user-images.githubusercontent.com/66309582/170818164-78551d05-b19f-4422-91b6-386d7194f3ea.png)
 
-A minimal iOS AR(Augmented Reality) app that scans QR code in AR scene.
-
-The app detects multiple QR codes in the AR scene at the same time.
-It also places a plane and sphere virtual object on top of each QR code.
-The decoded string of the QR code is displayed on the Xcode console.
+iOS AR app that records base and mobile QR Code, measures the distance between them and then use base QR code to place mobile QR codes relative to base
 
 The project;
 
@@ -19,19 +15,6 @@ It shows;
 - QR code detection in ARFrame with Vision framework
 - Raycasting to locate the QR code position in the AR scene
 - Displaying polygon on top of the QR code using RealityKit 2 procedural geometry
-
-Vision can detect many types of barcodes.
-This project is limited to QR codes and mini QR codes.
-You can easily remove the restrictions or specify other formats.
-
-As Vision detects QR codes for each frame,
-you can add a QR code tracking function with a small code change.
-
-This project is a minimal implementation.
-Please modify it and make your own AR app!
-
-![Image](https://user-images.githubusercontent.com/66309582/170818376-cbc27c3a-ebb5-4bc6-a2db-2dc0c2b147e0.jpeg)
-![GIF](https://user-images.githubusercontent.com/66309582/170818491-65dc989c-f590-408c-a831-a0e90083bf94.gif)
 
 ## References
 
