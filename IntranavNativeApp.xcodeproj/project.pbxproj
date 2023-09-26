@@ -17,6 +17,8 @@
 		BA8112E52840FB17007D119C /* QRCodeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8112E42840FB17007D119C /* QRCodeCollection.swift */; };
 		BA8112E82841E205007D119C /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8112E72841E205007D119C /* UIColor+extensions.swift */; };
 		BA8112EA2841F598007D119C /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8112E92841F598007D119C /* ScanView.swift */; };
+		D0D6055B2AA5B3E40008F739 /* CC0_-_Arrow_5.usdz in Resources */ = {isa = PBXBuildFile; fileRef = D0D6055A2AA5B3E40008F739 /* CC0_-_Arrow_5.usdz */; };
+		D0F00D452AAEF0A800D0C734 /* ArrowScene.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = D0F00D442AAEF0A800D0C734 /* ArrowScene.rcproject */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		BA8112E72841E205007D119C /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 		BA8112E92841F598007D119C /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		BA8112EB28420BC4007D119C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D0D6055A2AA5B3E40008F739 /* CC0_-_Arrow_5.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "CC0_-_Arrow_5.usdz"; sourceTree = "<group>"; };
+		D0F00D442AAEF0A800D0C734 /* ArrowScene.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = ArrowScene.rcproject; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 		BA8112A4283EFBD1007D119C /* arqrscanner */ = {
 			isa = PBXGroup;
 			children = (
+				D0F00D442AAEF0A800D0C734 /* ArrowScene.rcproject */,
+				D0D6055A2AA5B3E40008F739 /* CC0_-_Arrow_5.usdz */,
 				BA8112B3283EFC35007D119C /* Info.plist */,
 				BA8112A5283EFBD1007D119C /* arqrscannerApp.swift */,
 				BA8112B4283F0145007D119C /* Views */,
@@ -181,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA8112AD283EFBD2007D119C /* Preview Assets.xcassets in Resources */,
+				D0D6055B2AA5B3E40008F739 /* CC0_-_Arrow_5.usdz in Resources */,
 				BA8112AA283EFBD2007D119C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,6 +225,7 @@
 				BA8112A6283EFBD1007D119C /* arqrscannerApp.swift in Sources */,
 				BA8112E82841E205007D119C /* UIColor+extensions.swift in Sources */,
 				BA8112E52840FB17007D119C /* QRCodeCollection.swift in Sources */,
+				D0F00D452AAEF0A800D0C734 /* ArrowScene.rcproject in Sources */,
 				BA8112EA2841F598007D119C /* ScanView.swift in Sources */,
 				BA8112B6283F01B5007D119C /* ARContainerView.swift in Sources */,
 				BA8112B8283F01EC007D119C /* ARViewController.swift in Sources */,

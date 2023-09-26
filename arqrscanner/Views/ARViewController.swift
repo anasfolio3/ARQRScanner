@@ -4,7 +4,6 @@
 //
 //  Created by Yasuhito Nagatomo on 2022/05/26.
 //
-
 import UIKit
 import ARKit
 import RealityKit
@@ -92,6 +91,11 @@ final class ARViewController: UIViewController {
     
     }
     
+    private func GeneratArrow(start: SCNVector3, end: SCNVector3) -> SCNNode
+    {
+        return SCNNode();
+    }
+    
     private func addBackButton() {
         
         backButton.setTitle("Back", for: .normal)
@@ -114,7 +118,6 @@ final class ARViewController: UIViewController {
             backButton.heightAnchor.constraint(equalToConstant: 50), // Adjust the height as needed
             backButton.widthAnchor.constraint(equalToConstant: 100) // Adjust the height as needed
         ])
-    
     }
     
     private func addScanButton() {
@@ -128,7 +131,6 @@ final class ARViewController: UIViewController {
         arScene.setScanButton(btn: scanButton)
         
         scanButton.isHidden = false
-        
         // Enable auto layout for the label
         scanButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -139,6 +141,5 @@ final class ARViewController: UIViewController {
             scanButton.heightAnchor.constraint(equalToConstant: 50), // Adjust the height as needed
             scanButton.widthAnchor.constraint(equalToConstant: 100) // Adjust the height as needed
         ])
-    
     }
 }

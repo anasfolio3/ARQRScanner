@@ -15,7 +15,7 @@ final class ARScene {
     private var accumulativeTime: Double = 0.0
     private let detectionIntervalTime: Double = 5.0 // scanning interval [sec]
     private var renderLoopSubscription: Cancellable?
-
+    
     private var arView: ARView!
     private var baseEntity = Entity()
 
@@ -94,14 +94,12 @@ final class ARScene {
                                 {
                                     window.rootViewController?.present(alert, animated: true)
                                 }
-                                
                             }
                         }
                     }
                 }
             }
         }
-        
     }
     
     func triggerViewMode(){
@@ -110,6 +108,15 @@ final class ARScene {
         viewMode = true;
         removeAllChildEntities(from: baseEntity)
     }
+    
+    func createArrowModel() -> Entity {
+        //let model = try! Entity.loadModel(named: "CC0_-_Arrow_5");
+        //return model;
+        let scene = try! ArrowScene.loadArrow();
+        let circleEntity = scene.children[0] as! Entity
+        return circleEntity;
+    }
+
 
     init(arView: ARView, anchor: AnchorEntity) {
         self.arView = arView
@@ -307,7 +314,17 @@ extension ARScene {
             model.transform.translation = basePosition + v;
         }
         
-        baseEntity.addChild(model)
+        baseEntity.addChild(model);
+        
+        let arrowModel =  createArrowModel();
+        baseEntity.addChild(arrowModel);
+        arrowModel.position = model.position;
+        print(model.position)
+        print(arrowModel.position)
+        // print("Current Scale: {0}", arrowModel.scale.x)
+       // print("Current Pos: {0}", arrowModel.position.y)
+        //arrowModel.position.y += 0.2;
+       // arrowModel.look(at:[0,0,0], from: arrowModel.position, relativeTo: model)
         model.name = "ball"
     }
             
