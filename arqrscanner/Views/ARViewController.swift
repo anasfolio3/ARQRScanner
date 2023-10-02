@@ -38,7 +38,7 @@ final class ARViewController: UIViewController {
         let anchorEntity = AnchorEntity()
         arView.scene.addAnchor(anchorEntity)
         arScene = ARScene(arView: arView, anchor: anchorEntity)
-
+        
         #if !targetEnvironment(simulator)
         if !ProcessInfo.processInfo.isiOSAppOnMac {
             let config = ARWorldTrackingConfiguration()

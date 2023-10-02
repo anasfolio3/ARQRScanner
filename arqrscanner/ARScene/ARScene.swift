@@ -264,8 +264,6 @@ extension ARScene {
 //        model.name = "ball"
     }
     
-    
-    
     func calculateDistance() {
         
         let start = baseCode.unsafelyUnwrapped.center
@@ -284,31 +282,71 @@ extension ARScene {
         dirVector = end - start;
     }
     
+    func createTextEntity(text: String) -> Entity {
+        let textMesh = MeshResource.generateText(text, extrusionDepth: 0.01, font: .systemFont(ofSize: 0.1), containerFrame: CGRect.zero, alignment: .left, lineBreakMode: .byTruncatingTail)
+        
+        let textModelComponent = ModelComponent(mesh: textMesh, materials: [SimpleMaterial(color: UIColor.black, isMetallic: false)]);
+        let textEntity = Entity()
+        textEntity.components.set(textModelComponent)
+        textEntity.scale = SIMD3<Float>(x: 0.12, y: 0.12, z: 0.12);
+        return textEntity
+    }
+
+    
     func placeGenericModel(v: SIMD3<Float>){
         
         let matGeo = SimpleMaterial(color: UIColor.randomColor(alpha: 1.0), isMetallic: false)
         
         /* Plane mesh creation */
-        let meshGeo = MeshResource.generateBox(width: 0.06, height: 0.06, depth: 0.06, cornerRadius: 0.005 )
+        let meshGeo = MeshResource.generateBox(width: 0.06, height: 0.06, depth: 0.06, cornerRadius: 0.005)
         let model = ModelEntity(mesh: meshGeo, materials: [matGeo])
-
+        
         let rotationAngle: Float = 40.0
         let rotation = simd_quatf(angle: rotationAngle * .pi / 180, axis: [0, 1, 0])
-        model.transform.rotation = rotation
-         
-//        /* Sphere mesh creation */
-//        let meshGeo = MeshResource.generateSphere(radius: 0.04)
-//        let model = ModelEntity(mesh: meshGeo, materials: [matGeo])
-//
-//        let scaleY: Float = 0.03
-//        model.transform.scale.y = scaleY
+//        model.transform.rotation = rotation
+        //        /* Sphere mesh creation */
+        //        let meshGeo = MeshResource.generateSphere(radius: 0.04)
+        //        let model = ModelEntity(mesh: meshGeo, materials: [matGeo])
+        //
+        //        let scaleY: Float = 0.03
+        //        model.transform.scale.y = scaleY
+        if let basePosition = baseCode?.center, let mobileCodePayload = mobileCode?.payload {
+            let modelPosition = basePosition + v;
+            model.transform.translation = modelPosition;
+            let length =  simd_precise_length(v);
+            let currentLine = generateLineMesh(to: modelPosition, from: basePosition, wide: length);
                 
-        if let basePosition = baseCode?.center{
-            model.transform.translation = basePosition + v;
+            let vectorString = "Install router here (\(mobileCodePayload)) \nX: \(String(format: "%.2f", modelPosition.x)) \nY: \(String(format: "%.2f", modelPosition.y))\nZ: \(String(format: "%.2f", modelPosition.z))";
+            let textEntity = createTextEntity(text: vectorString);
+            
+            textEntity.position = modelPosition;
+            textEntity.position.y += 0.06;
+            
+            baseEntity.addChild(currentLine);
+            baseEntity.addChild(textEntity);
+            
         }
         
         baseEntity.addChild(model)
         model.name = "ball"
+    }
+    
+    func generateLineMesh(to: SIMD3<Float>, from: SIMD3<Float>, wide: Float) -> ModelEntity
+    {
+        var mat = PhysicallyBasedMaterial()
+        mat.baseColor = .init(tint: .black)
+        mat.sheen = .init(tint: .black)
+        mat.emissiveIntensity = 3
+        mat.emissiveColor = .init(texture: MaterialParameters.Texture(try! .load(named: "Stripe")))
+        
+        //mat.emissiveColor = .init(color: .systemBlue)
+        
+        let rectangle = ModelEntity(mesh: .generateBox(width: 0.003, height: 0.003, depth: wide), materials: [mat])
+        let middlePoint : simd_float3 = simd_float3((from.x + to.x)/2, (from.y + to.y)/2, (from.z + to.z)/2);
+        rectangle.position = middlePoint;
+        rectangle.look(at: from, from: middlePoint, relativeTo: nil);
+        
+        return rectangle;
     }
             
     func placeModelRelativeToBase(){

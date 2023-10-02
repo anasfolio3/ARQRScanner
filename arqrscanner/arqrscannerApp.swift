@@ -13,6 +13,6 @@ struct ARQRScannerApp: App {
         WindowGroup {
             ScanView()
                 .ignoresSafeArea()
-        }
+        } 
     }
 }

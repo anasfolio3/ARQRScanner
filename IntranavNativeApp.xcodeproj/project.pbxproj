@@ -17,6 +17,7 @@
 		BA8112E52840FB17007D119C /* QRCodeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8112E42840FB17007D119C /* QRCodeCollection.swift */; };
 		BA8112E82841E205007D119C /* UIColor+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8112E72841E205007D119C /* UIColor+extensions.swift */; };
 		BA8112EA2841F598007D119C /* ScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA8112E92841F598007D119C /* ScanView.swift */; };
+		D05CCF6C2AC440A700C7A684 /* Stripe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D05CCF6B2AC440A700C7A684 /* Stripe.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		BA8112E72841E205007D119C /* UIColor+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extensions.swift"; sourceTree = "<group>"; };
 		BA8112E92841F598007D119C /* ScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanView.swift; sourceTree = "<group>"; };
 		BA8112EB28420BC4007D119C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D05CCF6B2AC440A700C7A684 /* Stripe.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Stripe.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		BA8112A4283EFBD1007D119C /* arqrscanner */ = {
 			isa = PBXGroup;
 			children = (
+				D05CCF6B2AC440A700C7A684 /* Stripe.jpg */,
 				BA8112B3283EFC35007D119C /* Info.plist */,
 				BA8112A5283EFBD1007D119C /* arqrscannerApp.swift */,
 				BA8112B4283F0145007D119C /* Views */,
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA8112AD283EFBD2007D119C /* Preview Assets.xcassets in Resources */,
+				D05CCF6C2AC440A700C7A684 /* Stripe.jpg in Resources */,
 				BA8112AA283EFBD2007D119C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,7 +351,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"arqrscanner/Preview Content\"";
 				DEVELOPMENT_TEAM = 5XVW6D6XEA;
 				ENABLE_PREVIEWS = YES;
@@ -378,7 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"arqrscanner/Preview Content\"";
 				DEVELOPMENT_TEAM = 5XVW6D6XEA;
 				ENABLE_PREVIEWS = YES;
