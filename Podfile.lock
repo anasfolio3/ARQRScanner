@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (5.8.0)
+  - lottie-ios (3.3.0)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
+  - SkeletonView (1.29.2)
+  - SwiftLint (0.47.1)
+
+DEPENDENCIES:
+  - lottie-ios (= 3.3.0)
+  - Moya (~> 15.0)
+  - SkeletonView (= 1.29.2)
+  - SwiftLint (= 0.47.1)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - lottie-ios
+    - Moya
+    - SkeletonView
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
+  SkeletonView: 915a80ecc2b6421ab7ac0f0212321c0cc1406472
+  SwiftLint: f80f1be7fa96d30e0aa68e58d45d4ea1ccaac519
+
+PODFILE CHECKSUM: 1dafc9217767e122cec2545a2d1b1e17238c9af2
+
+COCOAPODS: 1.13.0

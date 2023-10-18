@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nWq-Dp-TuL">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="irA-MS-jiK">
+            <objects>
+                <navigationController id="nWq-Dp-TuL" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U9A-uT-sZm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eCN-I2-LEe" kind="relationship" relationship="rootViewController" id="OkY-Ii-IFu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P4c-Qs-ucM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-932" y="55"/>
+        </scene>
+        <!--Trending Repo View Controller-->
+        <scene sceneID="6ZA-zg-hvk">
+            <objects>
+                <viewController id="eCN-I2-LEe" customClass="TrendingRepoViewController" customModule="DeviceMeasure" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pWP-dk-Rsi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fGn-80-o4x">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="repoTableViewCell" id="whr-KR-kgF" customClass="RepoTableViewCell" customModule="SadaPayDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="142.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="whr-KR-kgF" id="Hbb-l2-DRs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="142.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BLp-c6-CWC" customClass="RoundImageView" customModule="SadaPayDemo" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="15" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Yu8-mg-DWq"/>
+                                                        <constraint firstAttribute="width" constant="40" id="bmR-YR-YZ8"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRounded" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kPz-86-ecv">
+                                                    <rect key="frame" x="80" y="15" width="334" height="112.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-9M-dy7" customClass="RegularLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="324" height="20.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20.5" id="VGY-F3-MyM"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLp-VT-1l5" customClass="SemiBoldLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="30.5" width="324" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp3-Ju-dza" customClass="CaptionLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="61.5" width="324" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                                    <real key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dOt-4A-j8Y">
+                                                            <rect key="frame" x="0.0" y="92" width="163" height="20.5"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KYl-5b-HdF">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="71.5" height="20.5"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebadge.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="P8g-d6-0rU">
+                                                                            <rect key="frame" x="0.0" y="2.5" width="20" height="15"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20" id="QUO-Zw-P3t"/>
+                                                                                <constraint firstAttribute="width" constant="20" id="idM-BX-Dey"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qog-xO-RAy" customClass="RegularLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                                            <rect key="frame" x="30" y="0.0" width="41.5" height="20.5"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20.5" id="8GM-ou-Yxp"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="Qog-xO-RAy" secondAttribute="trailing" id="i3F-Eq-Mxm"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </stackView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OlJ-lq-iPE">
+                                                                    <rect key="frame" x="91.5" y="0.0" width="71.5" height="20.5"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Nhe-Lf-qh5">
+                                                                            <rect key="frame" x="0.0" y="-0.5" width="20" height="20"/>
+                                                                            <color key="tintColor" name="Golden"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20" id="9cR-Ir-a0H"/>
+                                                                                <constraint firstAttribute="width" constant="20" id="F9e-JY-ddn"/>
+                                                                            </constraints>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLr-Zo-dML" customClass="RegularLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                                            <rect key="frame" x="30" y="0.0" width="41.5" height="20.5"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="20.5" id="dey-Ii-6pv"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="vLr-Zo-dML" secondAttribute="trailing" id="JfH-uM-AEW"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Hp3-Ju-dza" secondAttribute="trailing" constant="10" id="JrQ-ce-iVu"/>
+                                                        <constraint firstItem="Xbm-9M-dy7" firstAttribute="leading" secondItem="kPz-86-ecv" secondAttribute="leading" id="O5D-i4-mQA"/>
+                                                        <constraint firstItem="KLp-VT-1l5" firstAttribute="leading" secondItem="Xbm-9M-dy7" secondAttribute="leading" id="Ur0-ua-xCz"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Xbm-9M-dy7" secondAttribute="trailing" constant="10" id="YAX-fc-hU5"/>
+                                                        <constraint firstAttribute="trailing" secondItem="KLp-VT-1l5" secondAttribute="trailing" constant="10" id="b16-1K-dKL"/>
+                                                        <constraint firstItem="Hp3-Ju-dza" firstAttribute="leading" secondItem="Xbm-9M-dy7" secondAttribute="leading" id="quR-Nx-LAJ"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BLp-c6-CWC" firstAttribute="top" secondItem="Hbb-l2-DRs" secondAttribute="top" constant="15" id="3BU-gR-FPe"/>
+                                                <constraint firstItem="kPz-86-ecv" firstAttribute="top" secondItem="Hbb-l2-DRs" secondAttribute="top" constant="15" id="7Ch-XE-Hqy"/>
+                                                <constraint firstItem="BLp-c6-CWC" firstAttribute="leading" secondItem="Hbb-l2-DRs" secondAttribute="leading" constant="15" id="C5w-qH-7It"/>
+                                                <constraint firstAttribute="bottom" secondItem="kPz-86-ecv" secondAttribute="bottom" constant="15" id="F2c-kS-3gY"/>
+                                                <constraint firstItem="kPz-86-ecv" firstAttribute="leading" secondItem="BLp-c6-CWC" secondAttribute="trailing" constant="25" id="Rv1-4s-hzi"/>
+                                                <constraint firstAttribute="trailing" secondItem="kPz-86-ecv" secondAttribute="trailing" id="ceF-yV-ooO"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="BLp-c6-CWC" id="nv3-d2-d1e"/>
+                                            <outlet property="descriptionLabel" destination="Hp3-Ju-dza" id="Ruc-3s-TZW"/>
+                                            <outlet property="languageLabel" destination="Qog-xO-RAy" id="OwM-Bc-obe"/>
+                                            <outlet property="ownerNameLabel" destination="Xbm-9M-dy7" id="fgc-eh-gqq"/>
+                                            <outlet property="repoNameLabel" destination="KLp-VT-1l5" id="U82-r3-OOS"/>
+                                            <outlet property="starCountLabel" destination="vLr-Zo-dML" id="hcI-p7-Jdx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-SZ-ksH" userLabel="ErrorView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="yp9-xW-QPA" customClass="AnimationView" customModule="Lottie">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="error"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGC-Pq-0AG" customClass="SecondaryButton" customModule="SadaPayDemo" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="673" width="374" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="RETRY"/>
+                                        <connections>
+                                            <action selector="retryButtonTapped:" destination="eCN-I2-LEe" eventType="touchUpInside" id="D1s-q3-sc7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="yp9-xW-QPA" firstAttribute="top" secondItem="Mys-SZ-ksH" secondAttribute="top" id="3QQ-dj-eN3"/>
+                                    <constraint firstItem="WGC-Pq-0AG" firstAttribute="leading" secondItem="Mys-SZ-ksH" secondAttribute="leading" constant="20" id="6w9-Y6-7GF"/>
+                                    <constraint firstAttribute="trailing" secondItem="yp9-xW-QPA" secondAttribute="trailing" id="JB2-FB-lPU"/>
+                                    <constraint firstItem="yp9-xW-QPA" firstAttribute="leading" secondItem="Mys-SZ-ksH" secondAttribute="leading" id="P8h-KX-LRc"/>
+                                    <constraint firstAttribute="bottom" secondItem="WGC-Pq-0AG" secondAttribute="bottom" constant="70" id="WoF-76-Tym"/>
+                                    <constraint firstItem="WGC-Pq-0AG" firstAttribute="centerX" secondItem="Mys-SZ-ksH" secondAttribute="centerX" id="XQE-Ea-sbo"/>
+                                    <constraint firstItem="WGC-Pq-0AG" firstAttribute="top" secondItem="yp9-xW-QPA" secondAttribute="bottom" constant="50" id="kFB-gK-QxW"/>
+                                    <constraint firstAttribute="trailing" secondItem="WGC-Pq-0AG" secondAttribute="trailing" constant="20" id="y18-PU-2A3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kGe-hW-2Ow"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fGn-80-o4x" firstAttribute="top" secondItem="kGe-hW-2Ow" secondAttribute="top" id="Ahn-By-fhO"/>
+                            <constraint firstItem="Mys-SZ-ksH" firstAttribute="top" secondItem="kGe-hW-2Ow" secondAttribute="top" id="HgO-MB-Ing"/>
+                            <constraint firstItem="kGe-hW-2Ow" firstAttribute="bottom" secondItem="fGn-80-o4x" secondAttribute="bottom" id="LJj-kf-u9S"/>
+                            <constraint firstItem="fGn-80-o4x" firstAttribute="leading" secondItem="kGe-hW-2Ow" secondAttribute="leading" id="N2k-DM-sWY"/>
+                            <constraint firstItem="kGe-hW-2Ow" firstAttribute="trailing" secondItem="fGn-80-o4x" secondAttribute="trailing" id="TXW-I8-1Ij"/>
+                            <constraint firstItem="Mys-SZ-ksH" firstAttribute="leading" secondItem="pWP-dk-Rsi" secondAttribute="leading" id="bUW-r4-lqc"/>
+                            <constraint firstItem="kGe-hW-2Ow" firstAttribute="bottom" secondItem="Mys-SZ-ksH" secondAttribute="bottom" id="f9x-5C-uQ8"/>
+                            <constraint firstAttribute="trailing" secondItem="Mys-SZ-ksH" secondAttribute="trailing" id="qK9-Cd-Zeq"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" id="r2F-Eg-Zfg"/>
+                    <connections>
+                        <outlet property="errorAnimationView" destination="yp9-xW-QPA" id="A2h-Gw-Pfp"/>
+                        <outlet property="errorView" destination="Mys-SZ-ksH" id="ens-hP-so5"/>
+                        <outlet property="tableView" destination="fGn-80-o4x" id="hiB-Lo-b9F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AwC-9t-HU8" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="54.910714285714285"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="Hp3-Ju-dza">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="KLp-VT-1l5">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="Qog-xO-RAy">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="WGC-Pq-0AG">
+            <size key="intrinsicContentSize" width="68" height="31"/>
+        </designable>
+        <designable name="Xbm-9M-dy7">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+        <designable name="vLr-Zo-dML">
+            <size key="intrinsicContentSize" width="41.5" height="20.5"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <namedColor name="Golden">
+            <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
