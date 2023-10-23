@@ -49,6 +49,8 @@
 		6FC7ED82292B05B200B433E5 /* TrendingRepoViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC7ED7F292B05B200B433E5 /* TrendingRepoViewModelTest.swift */; };
 		6FC7ED88292B0E4500B433E5 /* RepoTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC7ED87292B0E4500B433E5 /* RepoTableViewCellViewModel.swift */; };
 		A1B53C779845F73B2E4A3309 /* Pods_DeviceMeasure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00CEB1E918326CD4C5CC8F6F /* Pods_DeviceMeasure.framework */; };
+		AFFC30EA2AE640C700FD6FD7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC30E92AE640C700FD6FD7 /* MainViewController.swift */; };
+		AFFC30EC2AE6441000FD6FD7 /* RealityKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFC30EB2AE6441000FD6FD7 /* RealityKitViewController.swift */; };
 		BB7C4DF8BDDB5B563CF5CF37 /* Pods_DeviceMeasureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6929B32817C07A6390982616 /* Pods_DeviceMeasureTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +114,8 @@
 		721F046C80376309A980FC4C /* Pods-DeviceMeasureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeviceMeasureTests.release.xcconfig"; path = "Target Support Files/Pods-DeviceMeasureTests/Pods-DeviceMeasureTests.release.xcconfig"; sourceTree = "<group>"; };
 		755A14714B0ED35D232CB168 /* Pods-DeviceMeasure.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeviceMeasure.debug.xcconfig"; path = "Target Support Files/Pods-DeviceMeasure/Pods-DeviceMeasure.debug.xcconfig"; sourceTree = "<group>"; };
 		7F019485C02FEC2473D7C7E6 /* Pods-DeviceMeasure.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeviceMeasure.release.xcconfig"; path = "Target Support Files/Pods-DeviceMeasure/Pods-DeviceMeasure.release.xcconfig"; sourceTree = "<group>"; };
+		AFFC30E92AE640C700FD6FD7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		AFFC30EB2AE6441000FD6FD7 /* RealityKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealityKitViewController.swift; sourceTree = "<group>"; };
 		EA51E7C20334C5D5ED453C1B /* Pods-DeviceMeasureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeviceMeasureTests.debug.xcconfig"; path = "Target Support Files/Pods-DeviceMeasureTests/Pods-DeviceMeasureTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +231,8 @@
 			children = (
 				6FC7ED2A292B055300B433E5 /* BaseViewController.swift */,
 				6FC7ED2B292B055300B433E5 /* TrendingRepoViewController */,
+				AFFC30E92AE640C700FD6FD7 /* MainViewController.swift */,
+				AFFC30EB2AE6441000FD6FD7 /* RealityKitViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 				TargetAttributes = {
 					6FC7ED01292B04B800B433E5 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1410;
 					};
 					6FC7ED70292B059A00B433E5 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -632,6 +639,7 @@
 				6FC7ED65292B057100B433E5 /* NetworkManager+Extensions.swift in Sources */,
 				6FC7ED48292B055300B433E5 /* BoldLabel.swift in Sources */,
 				6FC7ED6A292B057100B433E5 /* RepoModel.swift in Sources */,
+				AFFC30EA2AE640C700FD6FD7 /* MainViewController.swift in Sources */,
 				6FC7ED06292B04B800B433E5 /* AppDelegate.swift in Sources */,
 				6FC7ED08292B04B800B433E5 /* SceneDelegate.swift in Sources */,
 				6FC7ED88292B0E4500B433E5 /* RepoTableViewCellViewModel.swift in Sources */,
@@ -640,6 +648,7 @@
 				6FC7ED4E292B055300B433E5 /* RoundedImageView.swift in Sources */,
 				6FC7ED67292B057100B433E5 /* API+Router.swift in Sources */,
 				6FC7ED44292B055300B433E5 /* Typography.swift in Sources */,
+				AFFC30EC2AE6441000FD6FD7 /* RealityKitViewController.swift in Sources */,
 				6FC7ED66292B057100B433E5 /* APIService.swift in Sources */,
 				6FC7ED4B292B055300B433E5 /* UIImageView+Extensions.swift in Sources */,
 				6FC7ED4C292B055300B433E5 /* UIColor+Extensions.swift in Sources */,
@@ -808,6 +817,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -825,6 +835,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tharani.DeviceMeasure;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -836,6 +847,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

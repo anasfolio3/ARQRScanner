@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nWq-Dp-TuL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nWq-Dp-TuL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,11 +15,11 @@
             <objects>
                 <navigationController id="nWq-Dp-TuL" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="U9A-uT-sZm">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="eCN-I2-LEe" kind="relationship" relationship="rootViewController" id="OkY-Ii-IFu"/>
+                        <segue destination="zwB-Yl-O65" kind="relationship" relationship="rootViewController" id="zXp-jf-5B1"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4c-Qs-ucM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -34,17 +35,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fGn-80-o4x">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="repoTableViewCell" id="whr-KR-kgF" customClass="RepoTableViewCell" customModule="SadaPayDemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="142.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="repoTableViewCell" id="whr-KR-kgF" customClass="RepoTableViewCell" customModule="DeviceMeasure" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="142.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="whr-KR-kgF" id="Hbb-l2-DRs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="142.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BLp-c6-CWC" customClass="RoundImageView" customModule="SadaPayDemo" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BLp-c6-CWC" customClass="RoundImageView" customModule="DeviceMeasure" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="15" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="Yu8-mg-DWq"/>
@@ -58,7 +59,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kPz-86-ecv">
                                                     <rect key="frame" x="80" y="15" width="334" height="112.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-9M-dy7" customClass="RegularLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xbm-9M-dy7" customClass="RegularLabel" customModule="DeviceMeasure" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="324" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20.5" id="VGY-F3-MyM"/>
@@ -70,7 +71,7 @@
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLp-VT-1l5" customClass="SemiBoldLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLp-VT-1l5" customClass="SemiBoldLabel" customModule="DeviceMeasure" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="30.5" width="324" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -79,7 +80,7 @@
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp3-Ju-dza" customClass="CaptionLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp3-Ju-dza" customClass="CaptionLabel" customModule="DeviceMeasure" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="61.5" width="324" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -104,7 +105,7 @@
                                                                                 <constraint firstAttribute="width" constant="20" id="idM-BX-Dey"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qog-xO-RAy" customClass="RegularLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qog-xO-RAy" customClass="RegularLabel" customModule="DeviceMeasure" customModuleProvider="target">
                                                                             <rect key="frame" x="30" y="0.0" width="41.5" height="20.5"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20.5" id="8GM-ou-Yxp"/>
@@ -132,7 +133,7 @@
                                                                                 <constraint firstAttribute="width" constant="20" id="F9e-JY-ddn"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLr-Zo-dML" customClass="RegularLabel" customModule="SadaPayDemo" customModuleProvider="target">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLr-Zo-dML" customClass="RegularLabel" customModule="DeviceMeasure" customModuleProvider="target">
                                                                             <rect key="frame" x="30" y="0.0" width="41.5" height="20.5"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20.5" id="dey-Ii-6pv"/>
@@ -198,17 +199,17 @@
                                 </userDefinedRuntimeAttributes>
                             </tableView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mys-SZ-ksH" userLabel="ErrorView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <subviews>
-                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="yp9-xW-QPA" customClass="AnimationView" customModule="Lottie">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="623"/>
+                                    <view contentMode="scaleAspectFit" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yp9-xW-QPA" customClass="AnimationView" customModule="Lottie">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="error"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGC-Pq-0AG" customClass="SecondaryButton" customModule="SadaPayDemo" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="673" width="374" height="31"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGC-Pq-0AG" customClass="SecondaryButton" customModule="DeviceMeasure" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="700" width="374" height="44"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="RETRY"/>
                                         <connections>
@@ -254,7 +255,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AwC-9t-HU8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="54.910714285714285"/>
+            <point key="canvasLocation" x="-971" y="898"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="VFq-M2-aI2">
+            <objects>
+                <viewController id="zwB-Yl-O65" customClass="MainViewController" customModule="DeviceMeasure" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FZT-dU-x8M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTj-cQ-6f8">
+                                <rect key="frame" x="147" y="230.5" width="120" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Jmb-f0-g5v"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="AR View"/>
+                                <connections>
+                                    <segue destination="HVp-AE-teg" kind="show" id="LTS-uJ-fr1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="abY-PM-cUF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UTj-cQ-6f8" firstAttribute="centerX" secondItem="FZT-dU-x8M" secondAttribute="centerX" id="4ma-9p-2tF"/>
+                            <constraint firstItem="UTj-cQ-6f8" firstAttribute="centerY" secondItem="FZT-dU-x8M" secondAttribute="centerY" constant="-200" id="Xkk-dw-aWK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="i4k-da-G04"/>
+                    <connections>
+                        <outlet property="arViewButton" destination="UTj-cQ-6f8" id="NNo-Yi-8ZK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nXa-RZ-WYO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36.231884057971016" y="54.910714285714285"/>
+        </scene>
+        <!--Reality Kit View Controller-->
+        <scene sceneID="8d3-Ps-TJf">
+            <objects>
+                <viewController id="HVp-AE-teg" customClass="RealityKitViewController" customModule="DeviceMeasure" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZVO-Q6-PfQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EA8-HJ-QHT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </arView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="exG-ll-Eff"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EA8-HJ-QHT" firstAttribute="trailing" secondItem="exG-ll-Eff" secondAttribute="trailing" id="9IU-De-ZSY"/>
+                            <constraint firstAttribute="bottom" secondItem="EA8-HJ-QHT" secondAttribute="bottom" id="buM-xw-N1c"/>
+                            <constraint firstItem="EA8-HJ-QHT" firstAttribute="leading" secondItem="exG-ll-Eff" secondAttribute="leading" id="hQJ-hy-yVJ"/>
+                            <constraint firstItem="EA8-HJ-QHT" firstAttribute="top" secondItem="ZVO-Q6-PfQ" secondAttribute="top" id="jcP-VR-1qs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hKb-Rd-Vea"/>
+                    <connections>
+                        <outlet property="realityKitView" destination="EA8-HJ-QHT" id="U1v-Vm-uLZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NNn-vI-tQf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="813.04347826086962" y="54.910714285714285"/>
         </scene>
     </scenes>
     <designables>
@@ -268,7 +335,7 @@
             <size key="intrinsicContentSize" width="41.5" height="20.5"/>
         </designable>
         <designable name="WGC-Pq-0AG">
-            <size key="intrinsicContentSize" width="68" height="31"/>
+            <size key="intrinsicContentSize" width="76" height="34.5"/>
         </designable>
         <designable name="Xbm-9M-dy7">
             <size key="intrinsicContentSize" width="41.5" height="20.5"/>
@@ -276,9 +343,10 @@
         <designable name="vLr-Zo-dML">
             <size key="intrinsicContentSize" width="41.5" height="20.5"/>
         </designable>
+        <designable name="yp9-xW-QPA"/>
     </designables>
     <resources>
-        <image name="circlebadge.fill" catalog="system" width="128" height="120"/>
+        <image name="circlebadge.fill" catalog="system" width="128" height="122"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="Golden">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
